@@ -27,20 +27,15 @@ public class TipCalc extends Activity {
 		getMenuInflater().inflate(R.menu.tip_calc, menu);
 		return true;
 	}
-	
-	public void onClr (View v) {
-		etAmount.setText("");
-		etTipAmt.setText("");
-		etTotal.setText("");
+
+	public void onClr(View v) {
+		etAmount.getText().clear();
+		etTipAmt.getText().clear();
+		etTotal.getText().clear();
 	}
 
 	public void calc10Pct(View v) {
-		if  (etAmount.getText().toString().trim().length() != 0) {
-			calcTip(10);
-		} else {
-			Toast.makeText(this, "Please enter an amount", Toast.LENGTH_SHORT).show();
-		}
-			
+		calcTip(10);
 	}
 
 	public void calc15Pct(View v) {
@@ -52,15 +47,20 @@ public class TipCalc extends Activity {
 	}
 
 	private void calcTip(double tipPct) {
-		double theAmount = Double.parseDouble(etAmount.getText().toString());
-		double tipAmt = theAmount * tipPct / 100;
-		double total = theAmount + tipAmt;
-		DecimalFormat df = new DecimalFormat("#.00");
-		// Toast.makeText(this, "Amount is $" + theAmount + " Tip is $" +
-		// tipAmt, Toast.LENGTH_SHORT).show();
-		etAmount.setText(df.format(theAmount));
-		etTipAmt.setText("$ " + df.format(tipAmt));
-		etTotal.setText("$ " + df.format(total));
+		
+		if ( etAmount.getText().length() > 0 && Double.parseDouble(etAmount.getText().toString()) >= 0.1 ) {
+			double theAmount = Double.parseDouble(etAmount.getText().toString());
+			double tipAmt = theAmount * tipPct / 100;
+			double total = theAmount + tipAmt;
+			DecimalFormat df = new DecimalFormat("#.00");
+			// Toast.makeText(this, "Amount is $" + theAmount + " Tip is $" +
+			// tipAmt, Toast.LENGTH_SHORT).show();
+			etAmount.setText(df.format(theAmount));
+			etTipAmt.setText("$ " + df.format(tipAmt));
+			etTotal.setText("$ " + df.format(total));
+		} else {
+			Toast.makeText(this, "Please enter an amount, atleast 10c", Toast.LENGTH_SHORT).show();
+		}
 	}
 
 }
