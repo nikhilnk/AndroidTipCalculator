@@ -11,5 +11,6 @@
     <string name="etTipAmt"></string>
     <string name="tvTotal">&quot;Total : &quot;</string>
     <string name="btnClr">x</string>
+    <string name="btnClearDesc">Button to clear amount field</string>
 
 </resources>

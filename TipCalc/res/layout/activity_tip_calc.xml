@@ -117,7 +117,7 @@
         android:text="@string/tvTotal"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    <Button
+    <ImageButton
         android:id="@+id/btClr"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
@@ -126,7 +126,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/etAmount"
         android:layout_toRightOf="@+id/etAmount"
-        android:onClick="onClr"
-        android:text="@string/btnClr" />
+        android:background="@drawable/ic_clear_amt"
+        android:contentDescription="@string/btnClearDesc"
+        android:onClick="onClr" />
 
 </RelativeLayout>
